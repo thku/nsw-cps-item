@@ -1,0 +1,46 @@
+var config =
+{
+  "properties":
+  {
+    "limits":
+    {
+      "rounds": 25,
+      "time": 900,
+      "tpr": 180
+    },
+    "submit": "Apply"
+  },
+  "items":
+  [
+    {
+      "name": "a",
+      "variable": "a",
+      "type": "input",
+      "attributes":
+      {
+        "default": 0,
+        "min": 0,
+        "max": 10,
+        "round": 1,
+        "unit": "Dollar",
+        "formula": null
+      },
+      "description": "none"
+    },
+    {
+      "name": "b",
+      "variable": "b",
+      "type": "output",
+      "attributes":
+      {
+        "default": 0,
+        "min": 0,
+        "max": 10,
+        "round": 1,
+        "unit": "Dollar",
+        "formula": "a * a - 5"
+      },
+      "description": "none"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+body {
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+#wrapper input[type="range"] {
+  width: 100%;
+}
