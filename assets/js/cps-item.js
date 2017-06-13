@@ -144,7 +144,7 @@ $(document).ready(function () {
 
       // update display
       if(item.type == "output") {
-        $('#wrapper #item-' + item.variable + ".value").html(result);
+        $('#wrapper #item-' + item.variable + " .value").html(result);
       } else {
         $('#wrapper input[name="' + item.variable + '"]').trigger('input');
       }
