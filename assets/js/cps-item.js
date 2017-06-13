@@ -74,20 +74,21 @@ $(document).ready(function () {
     // create a modal
 
     modals = '<div class="ui no-' + index + ' modal">\n';
-    modals += '<h2 class="header"></h2>';
+    modals += '<h2 class="header">' + explanation.header + '</h2>';
     modals += '<div class="';
 
     if(explanation.image != null) {
       modals += 'image content">\n';
-      modals += '<div class="ui medium image"></div>\n';
+      modals += '<div class="ui medium image">\n';
+      modals += '<img src="' + explanation.image + '" />\n</div>\n';
     } else {
       modals += 'content">\n';
     }
 
-    modals += '<div class="description"></div>\n';
+    modals += '<div class="description">' + explanation.description + '</div>\n';
     modals += '</div>\n';
     modals += '<div class="actions">\n';
-    modals += '<div class="ui positive button"></div>\n';
+    modals += '<div class="ui positive button">' + explanation.approve + '</div>\n';
     modals += '</div>\n</div>';
 
     // add to HTML
@@ -102,15 +103,9 @@ $(document).ready(function () {
     if(index == 0) {
       $('.ui.modal.no-' + index).modal('show');
     } else {
-      $('.ui.modal.no-' + index).modal('attach events', '.ui.modal.no-' + --index + ' .button');
+      $('.ui.modal.no-' + index).modal('attach events', '.ui.modal.no-' + (index - 1) + ' .button');
     }
   });
-
-  // add text
-  $('.ui.modal .header').html(config.explanation[0].header);
-  $('.ui.modal .content .ui.image').html(config.explanation.image);
-  $('.ui.modal .content .description').html(config.explanation.description);
-  $('.ui.modal .actions .positive.button').prepend(config.explanation.approve);
 
   // prepare round
   var round = 0;

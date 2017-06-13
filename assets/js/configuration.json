@@ -14,7 +14,7 @@ var config =
   [
     {
       "header": "Headline",
-      "image": "<img src=\"pathtoscreenshot\" />",
+      "image": "pathtoscreenshot",
       "description": "Description",
       "approve": "Start the test"
     }
