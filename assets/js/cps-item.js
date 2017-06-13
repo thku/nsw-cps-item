@@ -69,6 +69,17 @@ function calcItem(item) {
 }
 
 $(document).ready(function () {
+  // start modal
+  $('.ui.modal').modal({
+    blurring: true
+  }).modal('show');
+
+  // add text
+  $('.ui.modal .header').html(config.explanation.header);
+  $('.ui.modal .content .ui.image').html(config.explanation.image);
+  $('.ui.modal .content .description').html(config.explanation.description);
+  $('.ui.modal .actions .positive.button').prepend(config.explanation.approve);
+
   // prepare round
   var round = 0;
 

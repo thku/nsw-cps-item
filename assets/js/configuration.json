@@ -10,6 +10,13 @@ var config =
     },
     "submit": "Apply"
   },
+  "explanation":
+  {
+    "header": "Headline",
+    "image": "<img src=\"pathtoscreenshot\" />",
+    "description": "Description",
+    "approve": "Start the test"
+  },
   "items":
   [
     {
