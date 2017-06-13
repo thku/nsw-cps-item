@@ -69,13 +69,45 @@ function calcItem(item) {
 }
 
 $(document).ready(function () {
-  // start modal
-  $('.ui.modal').modal({
-    blurring: true
-  }).modal('show');
+  // explanation
+  $.each(config.explanation, function(index, explanation) {
+    // create a modal
+
+    modals = '<div class="ui no-' + index + ' modal">\n';
+    modals += '<h2 class="header"></h2>';
+    modals += '<div class="';
+
+    if(explanation.image != null) {
+      modals += 'image content">\n';
+      modals += '<div class="ui medium image"></div>\n';
+    } else {
+      modals += 'content">\n';
+    }
+
+    modals += '<div class="description"></div>\n';
+    modals += '</div>\n';
+    modals += '<div class="actions">\n';
+    modals += '<div class="ui positive button"></div>\n';
+    modals += '</div>\n</div>';
+
+    // add to HTML
+    $('body').append(modals);
+
+    // general modal settings
+    $('.ui.modal').modal({
+      closable: false,
+      blurring: true
+    });
+
+    if(index == 0) {
+      $('.ui.modal.no-' + index).modal('show');
+    } else {
+      $('.ui.modal.no-' + index).modal('attach events', '.ui.modal.no-' + --index + ' .button');
+    }
+  });
 
   // add text
-  $('.ui.modal .header').html(config.explanation.header);
+  $('.ui.modal .header').html(config.explanation[0].header);
   $('.ui.modal .content .ui.image').html(config.explanation.image);
   $('.ui.modal .content .description').html(config.explanation.description);
   $('.ui.modal .actions .positive.button').prepend(config.explanation.approve);
