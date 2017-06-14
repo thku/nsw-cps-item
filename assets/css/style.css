@@ -1,5 +1,28 @@
 body {
+  width: 100%;
+  height: 100%;
+
   font-family: "Helvetica Neue", sans-serif;
+}
+
+#cpsform {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  overflow: hidden;
+}
+
+#cpsform > input.button {
+  position: absolute;
+
+  bottom: 25px;
+  right: 10%;
+}
+
+#wrapper {
+  margin: 25px 25px 100px 25px;
 }
 
 #wrapper input[type="range"] {
