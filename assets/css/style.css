@@ -22,7 +22,10 @@ body {
 }
 
 #wrapper {
-  margin: 25px 25px 100px 25px;
+  max-width: 1014px;
+
+  margin: 25px auto 100px auto;
+  padding: 0 5px;
 }
 
 #wrapper input[type="range"] {

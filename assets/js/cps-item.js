@@ -9,7 +9,7 @@ function createItemCard(item, html) {
   html += '\t<div class="content">\n';
   html += '\t\t<h2 class="header">' + item.name + '</h2>\n';
   html += '\t</div>\n\t<div class="content">\n';
-  html += '\t\t<canvas width="200" height="150"></canvas>';
+  html += '\t\t<canvas height="150"></canvas>';
   html += '\t</div>\n';
   html += '\t<div class="extra content">\n';
 
@@ -120,6 +120,9 @@ $(document).ready(function () {
       // create graph
       // get canvas
       canvas = $('#item-' + item.variable + ' canvas');
+
+      // adjust size
+      canvas.width("100%");
 
       // set graph
       graphs[item.variable] = new Chart(canvas.get(0).getContext("2d"), {
