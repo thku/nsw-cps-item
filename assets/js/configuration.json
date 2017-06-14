@@ -19,6 +19,13 @@ var config =
       "approve": "Start the test"
     }
   ],
+  "final":
+  {
+    "header": "Headline",
+    "image": null,
+    "description": "Description",
+    "approve": "Finish"
+  },
   "items":
   [
     {
@@ -44,7 +51,7 @@ var config =
       {
         "default": 0,
         "min": 0,
-        "max": 10,
+        "max": null,
         "round": 1,
         "unit": "Dollar",
         "formula": "a * a - 5"

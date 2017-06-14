@@ -1,95 +1,8 @@
-function createItemCard(item, html) {
-  // make html argument optional
-  if(!html) {
-    var html = "";
-  }
-
-  // create HTML code
-  html += '<div id="item-' + item.variable + '" class="ui card">\n';
-  html += '\t<div class="content">\n';
-  html += '\t\t<h2 class="header">' + item.name + '</h2>\n';
-  html += '\t</div>\n\t<div class="content">\n';
-  html += '\t\t<canvas height="150"></canvas>';
-  html += '\t</div>\n';
-  html += '\t<div class="extra content">\n';
-
-  html += '\t\t<input name="' + item.variable + '" type="';
-  // if input variable type
-  if(item.type == "input") {
-    html += 'range" min="' + item.attributes.min;
-    html += '" max="' + item.attributes.max + '" value="';
-    html += calcItem(item) + '" step="' + item.attributes.round;
-  } else {
-    html += 'hidden" value="' + calcItem(item) + '"';
-  }
-
-  html += '" />\n';
-
-  html += '\t\t<div class="info">\n';
-  html += '\t\t\t<span class="value">';
-  html +=  calcItem(item);
-  html += '</span>\n';
-  html += '\t\t\t<span class="unit">' + item.attributes.unit + '</span>\n';
-  html += '\t\t</div>\n\t</div>\n</div>\n';
-
-  return html;
-}
-
-function calcItem(item) {
-  if(item.type == "input") {
-    // check if card already exists or return default
-    if($('#wrapper input[name="' + item.variable + '"]').length) {
-      return $('#wrapper input[name="' + item.variable + '"]').val();
-    } else {
-      return item.attributes.default;
-    }
-  } else {
-    // get formula
-    var formula = item.attributes.formula;
-
-    // get current values of input and prepare values of output variables
-    $.each(config.items, function(index, element) {
-      variable = new RegExp(element.variable, 'g');
-
-      if(element.type == "input") {
-        formula = formula.replace(variable, calcItem(element));
-      } else {
-        // check if element already exists
-        if($('#wrapper input[name="' + element.variable + '"]').length) {
-          formula = formula.replace(variable, $('#wrapper input[name="' + element.variable + '"]').val());
-        } else {
-          formula = formula.replace(variable, element.attributes.default);
-        }
-      }
-    });
-
-    // prepare output variable
-    return eval(formula);
-  }
-}
-
 $(document).ready(function () {
   // explanation
   $.each(config.explanation, function(index, explanation) {
     // create a modal
-
-    modals = '<div class="ui no-' + index + ' modal">\n';
-    modals += '<h2 class="header">' + explanation.header + '</h2>';
-    modals += '<div class="';
-
-    if(explanation.image != null) {
-      modals += 'image content">\n';
-      modals += '<div class="ui medium image">\n';
-      modals += '<img src="' + explanation.image + '" />\n</div>\n';
-    } else {
-      modals += 'content">\n';
-    }
-
-    modals += '<div class="description">' + explanation.description + '</div>\n';
-    modals += '</div>\n';
-    modals += '<div class="actions">\n';
-    modals += '<div class="ui positive button">' + explanation.approve + '</div>\n';
-    modals += '</div>\n</div>';
+    modals = createModal(explanation.header, explanation.description, explanation.approve, ('no-' + index), explanation.image);
 
     // add to HTML
     $('body').append(modals);
@@ -104,6 +17,28 @@ $(document).ready(function () {
       $('.ui.modal.no-' + index).modal('show');
     } else {
       $('.ui.modal.no-' + index).modal('attach events', '.ui.modal.no-' + (index - 1) + ' .button');
+    }
+  });
+
+  // prepare time
+  var initialstart = 0;
+  var start = initialstart;
+
+  // start time on last modal approve
+  $('.ui.modal').last().modal({
+    onApprove: function() {
+      initialstart = Math.round(Date.now() / 1000);
+      start = initialstart;
+
+      // see if a timeout per round is required and implement it
+      if(config.properties.limits.tpr !== null) {
+        var roundTimeout = setTimeout(triggerClick, (config.properties.limits.tpr * 1000));
+      }
+
+      // see if general timeout
+      if(config.properties.limits.time !== null) {
+        var overallTimeout = setTimeout(triggerClick, (config.properties.limits.time * 1000))
+      }
     }
   });
 
@@ -169,12 +104,48 @@ $(document).ready(function () {
 
   // button submission
   $('#cpsform .ui.button').click(function () {
+    // get time
+    overalltime = Math.round(Date.now() / 1000) - initialstart;
+
+    // stop timeout if existant
+    if(typeof roundTimeout != 'undefined') {
+      clearTimeout(roundTimeout);
+    }
+
     // update round
     round++;
 
-    if(round > config.properties.limits.rounds)
-    {
+    // interrupt if limits are reached
+    if(((config.properties.limits.rounds !== null) && (round > config.properties.limits.rounds))
+      || ((config.properties.limits.time !== null) && (overalltime >= config.properties.limits.time))) {
       // skip testing
+
+      // create modal
+      modals = createModal(config.final.header, config.final.description, config.final.approve, 'final', config.final.image);
+      $('body').append(modals);
+      $('.ui.modal.final').modal({
+        closable: false,
+        blurring: true,
+        onShow: function() {
+          // clear round timeout
+          if(typeof roundTimeout != 'undefined') {
+            clearTimeout(roundTimeout);
+          }
+
+          // clear overall timeout
+          if(typeof overallTimeout != 'undefined') {
+            clearTimeout(overallTimeout);
+          }
+        },
+        onApprove: function() {
+          location.reload();
+        }
+      }).modal('show');
+    }
+
+    // see if a timeout per round is required and implement it
+    if(config.properties.limits.tpr !== null) {
+      roundTimeout = setTimeout(triggerClick, (config.properties.limits.tpr * 1000));
     }
 
     $.each(config.items, function(index, item) {
@@ -189,6 +160,9 @@ $(document).ready(function () {
       } else {
         $('#wrapper input[name="' + item.variable + '"]').trigger('input');
       }
+
+      // update start time
+      start = Math.round(Date.now() / 1000);
 
       // update graph
       graphs[item.variable].data.datasets[0].data.push(result);
