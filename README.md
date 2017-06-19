@@ -4,6 +4,9 @@ An example Complex Problem Solving item for the Centre for Education, Statistics
 ## About
 This is an arbitrary non-tracking example for a CPS item. A live version can be seen [here](https://thku.github.io/nsw-cps-item/).
 
+### System Requirements
+A modern web browser with activated JavaScript.
+
 ## How To Use
 The most important file is found in `js/configuration.json`. It configures the whole complex system of the item. An example configuration is available. See the Wiki for further details.
 
