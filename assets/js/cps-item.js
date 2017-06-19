@@ -95,7 +95,7 @@ $(document).ready(function () {
   });
 
   // add submit button value
-  $('#cpsform .ui.button').val(config.properties.submit);
+  $('#cpsform .ui.button').val(config.properties.approve);
 
   // live input change
   $('.cards .card input[type="range"]').on("input", function () {

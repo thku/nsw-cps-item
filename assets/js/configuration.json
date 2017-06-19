@@ -8,7 +8,7 @@ var config =
       "time": 900,
       "tpr": 180
     },
-    "submit": "Apply"
+    "approve": "Apply"
   },
   "explanation":
   [
