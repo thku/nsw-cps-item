@@ -1,4 +1,4 @@
-# CPSi4CESE
+# A Complex Problem Solving concept item
 An example Complex Problem Solving item for the Centre for Education, Statistics & Evalutation of New South Wales
 
 ## About
