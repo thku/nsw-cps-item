@@ -1,4 +1,4 @@
-# A Complex Problem Solving concept item
+# A Complex Problem Solving Concept Item
 An example Complex Problem Solving item for the Centre for Education, Statistics & Evalutation of New South Wales
 
 ## About
@@ -7,7 +7,7 @@ This is an arbitrary non-tracking example for a CPS item. A live version can be 
 ### System Requirements
 A modern web browser with activated JavaScript.
 
-## How To Use
+## How to Use
 The most important file is found in `js/configuration.json`. It configures the whole complex system of the item. An example configuration is available. See the [Wiki](https://github.com/thku/nsw-cps-item/wiki) for further details.
 
 ## Dependencies
