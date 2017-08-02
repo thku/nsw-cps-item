@@ -37,6 +37,11 @@ function calcItem(item) {
     result = item.attributes.min;
   }
 
+  // round result
+  if((item.attributes.round !== null) && (item.type == "output")) {
+    result = Math.round(result, item.attributes.round);
+  }
+
   // return result
   return result;
 }
