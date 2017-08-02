@@ -14,8 +14,8 @@ var config =
   [
     {
       "header": "Headline",
-      "image": "pathtoscreenshot",
-      "description": "Description",
+      "image": null,
+      "description": "Managing a Pop star requires some work.\nDoing networking to establish the star in the long run;\nAdvertise the products and the star; and using fan projects for binding.\n\nIn this test, you must modify the investments in the three variables\nAdvertising, Networking, and Fan Projects to maximize the results in\nRecord Sales, Popularity and Media Interest.\n\nThe three input variables can be manipulated using the slider below them\nand approve the changes by pressing the button Apply. Notice that\nthe number of rounds that can be passed is limited. This item was designed\nto show the principles of Complex Problem Solving without being to difficult.",
       "approve": "Start the test"
     }
   ],
@@ -29,32 +29,92 @@ var config =
   "items":
   [
     {
-      "name": "a",
+      "name": "Advertising",
       "variable": "a",
       "type": "input",
       "attributes":
       {
         "default": 0,
         "min": 0,
-        "max": 10,
-        "round": 1,
+        "max": 10000,
+        "round": 100,
         "unit": "Dollar",
         "formula": null
       },
-      "description": "none"
+      "description": "TV and radio spots, promo events, ..."
     },
     {
-      "name": "b",
+      "name": "Networking",
       "variable": "b",
+      "type": "input",
+      "attributes":
+      {
+        "default": 0,
+        "min": 0,
+        "max": 5000,
+        "round": 50,
+        "unit": "Dollar",
+        "formula": null
+      },
+      "description": "Meet important persons and influencer, organize features, ..."
+    },
+    {
+      "name": "Fan Projects",
+      "variable": "c",
+      "type": "input",
+      "attributes":
+      {
+        "default": 0,
+        "min": 0,
+        "max": 1500,
+        "round": 25,
+        "unit": "Dollar",
+        "formula": null
+      },
+      "description": "Organize the fan club, book-signing, back-stage passes, ..."
+    },
+    {
+      "name": "Record Sales",
+      "variable": "d",
       "type": "output",
       "attributes":
       {
         "default": 0,
         "min": 0,
         "max": null,
-        "round": 1,
-        "unit": "Dollar",
-        "formula": "a * a - 5"
+        "round": 0,
+        "unit": "Sales",
+        "formula": "(1.85 * a - 0.45 * b + c * 1.25) * 95 + d - 1500"
+      },
+      "description": "Number of record sales."
+    },
+    {
+      "name": "Popularity",
+      "variable": "e",
+      "type": "output",
+      "attributes":
+      {
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "round": 0,
+        "unit": "%",
+        "formula": "(a / 10000 * 0.3 + c / 1500 * 0.6) * 95 + e / 10"
+      },
+      "description": "Percentage of persons who know the name of the star."
+    },
+    {
+      "name": "Media Interest Score",
+      "variable": "f",
+      "type": "output",
+      "attributes":
+      {
+        "default": 0,
+        "min": 0,
+        "max": null,
+        "round": 0,
+        "unit": "Points",
+        "formula": "3 * b - 1000"
       },
       "description": "none"
     }
