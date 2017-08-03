@@ -13,17 +13,17 @@ var config =
   "explanation":
   [
     {
-      "header": "Headline",
+      "header": "Welcome to an Example of Complex Problem Solving Assessment",
       "image": null,
-      "description": "Managing a Pop star requires some work.\nDoing networking to establish the star in the long run;\nAdvertise the products and the star; and using fan projects for binding.\n\nIn this test, you must modify the investments in the three variables\nAdvertising, Networking, and Fan Projects to maximize the results in\nRecord Sales, Popularity and Media Interest.\n\nThe three input variables can be manipulated using the slider below them\nand approve the changes by pressing the button Apply. Notice that\nthe number of rounds that can be passed is limited. This item was designed\nto show the principles of Complex Problem Solving without being to difficult.",
+      "description": "Managing a Pop star requires some work.\nDoing networking to establish the star in the long run;\nAdvertise the products and the star; and using fan projects for binding.\n\nIn this test, you must modify the investments in the three variables\nAdvertising, Networking, and Fan Projects to maximize the results in\nRecord Sales, Popularity and Earnings.\n\nThe three input variables can be manipulated using the slider below them\nand approve the changes by pressing the button Apply. Notice that\nthe number of rounds that can be passed is limited. This item was designed\nto show the principles of Complex Problem Solving without being to difficult.",
       "approve": "Start the test"
     }
   ],
   "final":
   {
-    "header": "Headline",
+    "header": "You Have Finished the Example",
     "image": null,
-    "description": "Description",
+    "description": "Thank you for your participation.\nIn the current version of this <a href=\"https://github.com/thku/nsw-cps-item/\">Open Source Software</a>, no test data were collected.\n\nIf you press the \"Finish\" button, you can restart the test item.",
     "approve": "Finish"
   },
   "items":
@@ -84,7 +84,7 @@ var config =
         "max": null,
         "round": 0,
         "unit": "Sales",
-        "formula": "(1.85 * a - 0.45 * b + c * 1.25) * 95 + d - 1500"
+        "formula": "a * c * (1 + e)"
       },
       "description": "Number of record sales."
     },
@@ -104,19 +104,19 @@ var config =
       "description": "Percentage of persons who know the name of the star."
     },
     {
-      "name": "Media Interest Score",
+      "name": "Earnings",
       "variable": "f",
       "type": "output",
       "attributes":
       {
         "default": 0,
-        "min": 0,
+        "min": null,
         "max": null,
         "round": 0,
-        "unit": "Points",
-        "formula": "3 * b - 1000"
+        "unit": "$",
+        "formula": "d * 0.3 - a - b - c - e^3 * 50000000"
       },
-      "description": "none"
+      "description": "Saldo of earnings and expenses"
     }
   ]
 }
