@@ -22,7 +22,7 @@ function createModal(header, description, approve, cssclass, image) {
     modals += 'content">\n';
   }
 
-  modals += '<div class="description">' + description + '</div>\n';
+  modals += '<div class="description"><pre>' + description + '</pre></div>\n';
   modals += '</div>\n';
   modals += '<div class="actions">\n';
   modals += '<div class="ui positive button">' + approve + '</div>\n';
