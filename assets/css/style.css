@@ -31,3 +31,15 @@ body {
 #wrapper input[type="range"] {
   width: 100%;
 }
+
+#wrapper .content > i {
+  right: 0;
+  left: 0;
+
+  margin: 0 auto;
+
+  position: absolute;
+
+  opacity: 0.2;
+}
+

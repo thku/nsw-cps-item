@@ -5,10 +5,22 @@ function createItemCard(item, html) {
   }
 
   // create HTML code
-  html += '<div id="item-' + item.variable + '" class="ui card">\n';
+  html += '<div id="item-' + item.variable + '" class="ui ';
+
+  if(item.type == "input") {
+    html += 'inverted blue ';
+  }
+
+  html += 'card">\n';
+
   html += '\t<div class="content">\n';
   html += '\t\t<h2 class="header">' + item.name + '</h2>\n';
   html += '\t</div>\n\t<div class="content">\n';
+
+  if(item.attributes.icon !== null) {
+    html += '<i class="' + item.attributes.icon + '"></i>\n';
+  }
+
   html += '\t\t<canvas height="150"></canvas>';
   html += '\t</div>\n';
   html += '\t<div class="extra content">\n';
@@ -34,3 +46,4 @@ function createItemCard(item, html) {
 
   return html;
 }
+

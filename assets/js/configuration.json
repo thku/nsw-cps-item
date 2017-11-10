@@ -39,7 +39,8 @@ var config =
         "max": 10000,
         "round": 100,
         "unit": "Dollar",
-        "formula": null
+        "formula": null,
+        "icon": "massive blue announcement icon"
       },
       "description": "TV and radio spots, promo events, ..."
     },
@@ -54,7 +55,8 @@ var config =
         "max": 5000,
         "round": 50,
         "unit": "Dollar",
-        "formula": null
+        "formula": null,
+        "icon": "massive blue share alternate icon"
       },
       "description": "Meet important persons and influencer, organize features, ..."
     },
@@ -69,7 +71,8 @@ var config =
         "max": 1500,
         "round": 25,
         "unit": "Dollar",
-        "formula": null
+        "formula": null,
+        "icon": "massive blue users icon"
       },
       "description": "Organize the fan club, book-signing, back-stage passes, ..."
     },
@@ -84,7 +87,8 @@ var config =
         "max": null,
         "round": 0,
         "unit": "Sales",
-        "formula": "a * c * (1 + e)"
+        "formula": "a * c * (1 + e)",
+        "icon": "massive line chart icon"
       },
       "description": "Number of record sales."
     },
@@ -99,7 +103,8 @@ var config =
         "max": 100,
         "round": 0,
         "unit": "%",
-        "formula": "(a / 10000 * 0.3 + c / 1500 * 0.6) * 95 + e / 10"
+        "formula": "(a / 10000 * 0.3 + c / 1500 * 0.6) * 95 + e / 10",
+        "icon": "massive percent icon"
       },
       "description": "Percentage of persons who know the name of the star."
     },
@@ -114,9 +119,11 @@ var config =
         "max": null,
         "round": 0,
         "unit": "$",
-        "formula": "d * 0.3 - a - b - c - e^3 * 50000000"
+        "formula": "d * 0.3 - a - b - c - e^3 * 50000000",
+        "icon": "massive money icon"
       },
       "description": "Saldo of earnings and expenses"
     }
   ]
 }
+
