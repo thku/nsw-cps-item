@@ -1,8 +1,11 @@
 # A Complex Problem Solving Concept Item
-An example Complex Problem Solving item for the Centre for Education, Statistics & Evalutation of New South Wales
+An example Complex Problem Solving (CPS) item for the Centre for Education, Statistics & Evalutation of New South Wales
 
 ## About
 This is an arbitrary non-tracking example for a CPS item. A live version can be seen [here](https://thku.github.io/nsw-cps-item/).
+
+## Contributors
+We are grateful to the [NSW Department of Education](https://www.cese.nsw.gov.au/) that made the development and publication of this package possible.
 
 ### System Requirements
 A modern web browser with activated JavaScript.
@@ -18,3 +21,4 @@ The most important file is found in `js/configuration.json`. It configures the w
 Copyright (c) 2017 T. Kunze
 
 Published under MIT license (see LICENSE.md file in this directory).
+
